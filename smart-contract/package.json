@@ -1,0 +1,16 @@
+{
+  "name": "smart-contract",
+  "version": "1.0.0",
+  "description": "Ethereum smart contract for storing Merkle roots",
+  "scripts": {
+    "compile": "truffle compile",
+    "migrate": "truffle migrate --network sepolia",
+    "test": "truffle test"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.3",
+    "@truffle/hdwallet-provider": "^2.0.14",
+    "dotenv": "^16.0.2",
+    "truffle": "^5.5.31"
+  }
+}

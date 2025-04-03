@@ -1,0 +1,43 @@
+{
+  "name": "web-ui",
+  "version": "1.0.0",
+  "description": "Visual interface for system monitoring and demonstration",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.3",
+    "axios": "^0.27.2",
+    "ethers": "^5.7.0",
+    "framer-motion": "^8.5.5",
+    "keccak256": "^1.0.6",
+    "lottie-react": "^2.4.1",
+    "merkletreejs": "^0.3.0",
+    "react": "^18.2.0",
+    "react-countup": "^6.5.3",
+    "react-dom": "^18.2.0",
+    "react-particles": "^2.12.2",
+    "react-scripts": "5.0.1",
+    "tsparticles": "^2.9.3",
+    "tsparticles-slim": "^2.12.0",
+    "typewriter-effect": "^2.21.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "blockchain": {
+    "provider": "https://sepolia.infura.io/v3/YOUR_INFURA_KEY",
+    "contractAddress": "YOUR_CONTRACT_ADDRESS"
+  },
+  "archive": {
+    "path": "../log-archive/archive"
+  }
+}

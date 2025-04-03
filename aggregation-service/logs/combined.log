@@ -1,0 +1,393 @@
+2025-04-03T05:21:35.277Z [INFO ] Loaded configuration from config file
+2025-04-03T05:21:44.835Z [INFO ] API: Loaded configuration from config file
+2025-04-03T05:21:44.886Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-03T05:21:44.886Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-03T05:21:44.889Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-03T05:21:44.989Z [INFO ] Next batch processing scheduled for 2025-04-03T05:25:00.000Z
+2025-04-03T05:21:44.989Z [INFO ] Services initialized successfully
+2025-04-03T05:21:44.990Z [INFO ] Service startup complete
+2025-04-03T05:25:00.006Z [INFO ] Starting scheduled batch processing
+2025-04-03T05:25:00.008Z [INFO ] Starting log batch processing
+2025-04-03T05:25:00.010Z [INFO ] No logs to process in this batch
+2025-04-03T05:27:24.969Z [INFO ] Starting log verification - { requestId: '4713d9f1-d0f0-46b1-8c3f-15ad557281b1', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.559Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T05:27:24.988Z [INFO ] Verification complete: VALID - { requestId: '4713d9f1-d0f0-46b1-8c3f-15ad557281b1', isValid: true, verificationTimeMs: 19, batchId: 200 }
+2025-04-03T05:28:45.985Z [INFO ] Starting log verification - { requestId: '2d75b453-f9da-487b-b261-9e92863c7bb5', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.559Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T05:28:45.990Z [WARN ] Log or proof not found in specified batch - { requestId: '2d75b453-f9da-487b-b261-9e92863c7bb5', batchId: 274, hasLogEntry: false, hasProof: false }
+2025-04-03T05:28:45.992Z [WARN ] [404] Log or proof not found in specified batch - { path: '/api/verify', method: 'POST', statusCode: 404, error: 'ApiError', context: { requestId: '2d75b453-f9da-487b-b261-9e92863c7bb5', batchId: 274 }, stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:315:11' }
+2025-04-03T05:28:45.996Z [WARN ] Access: POST /api/verify 404 10ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T05:30:00.005Z [INFO ] Starting scheduled batch processing
+2025-04-03T05:30:00.006Z [INFO ] Starting log batch processing
+2025-04-03T05:30:00.007Z [INFO ] No logs to process in this batch
+2025-04-03T05:35:00.005Z [INFO ] Starting scheduled batch processing
+2025-04-03T05:35:00.006Z [INFO ] Starting log batch processing
+2025-04-03T05:35:00.008Z [INFO ] No logs to process in this batch
+2025-04-03T05:38:29.777Z [INFO ] Received shutdown signal, closing server...
+2025-04-03T05:38:29.778Z [INFO ] Server closed, exiting process
+2025-04-03T05:47:29.680Z [INFO ] Loaded configuration from config file
+2025-04-03T05:47:30.820Z [INFO ] API: Loaded configuration from config file
+2025-04-03T05:47:30.840Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-03T05:47:30.842Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-03T05:47:30.847Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-03T05:47:30.888Z [INFO ] Next batch processing scheduled for 2025-04-03T05:50:00.000Z
+2025-04-03T05:47:30.889Z [INFO ] Services initialized successfully
+2025-04-03T05:47:30.890Z [INFO ] Service startup complete
+2025-04-03T05:47:58.170Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T05:47:58.181Z [WARN ] Access: GET /ws 404 8ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T05:48:00.213Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T05:48:00.217Z [WARN ] Access: GET /ws 404 5ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T05:48:04.262Z [INFO ] Received shutdown signal, closing server...
+2025-04-03T05:48:04.264Z [INFO ] Server closed, exiting process
+2025-04-03T05:48:06.168Z [INFO ] Loaded configuration from config file
+2025-04-03T05:48:07.274Z [INFO ] API: Loaded configuration from config file
+2025-04-03T05:48:07.288Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-03T05:48:07.289Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-03T05:48:07.292Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-03T05:48:07.327Z [INFO ] Next batch processing scheduled for 2025-04-03T05:50:00.000Z
+2025-04-03T05:48:07.328Z [INFO ] Services initialized successfully
+2025-04-03T05:48:07.328Z [INFO ] Service startup complete
+2025-04-03T05:48:07.524Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T05:48:07.532Z [WARN ] Access: GET /ws 404 6ms - { ip: '::1' }
+2025-04-03T05:48:15.590Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T05:48:15.594Z [WARN ] Access: GET /ws 404 4ms - { ip: '::1' }
+2025-04-03T05:48:31.605Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T05:48:31.610Z [WARN ] Access: GET /ws 404 4ms - { ip: '::1' }
+2025-04-03T05:49:03.660Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T05:49:03.663Z [WARN ] Access: GET /ws 404 2ms - { ip: '::1' }
+2025-04-03T05:50:00.009Z [INFO ] Starting scheduled batch processing
+2025-04-03T05:50:00.010Z [INFO ] Starting log batch processing
+2025-04-03T05:50:00.012Z [INFO ] No logs to process in this batch
+2025-04-03T05:50:07.765Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T05:50:07.769Z [WARN ] Access: GET /ws 404 4ms - { ip: '::1' }
+2025-04-03T05:50:48.949Z [INFO ] Loaded configuration from config file
+2025-04-03T05:50:50.083Z [INFO ] API: Loaded configuration from config file
+2025-04-03T05:50:50.097Z [ERROR] Uncaught exception - { error: 'listen EADDRINUSE: address already in use :::3000', stack: 'Error: listen EADDRINUSE: address already in use :::3000\n    at Server.setupListenHandle [as _listen2] (node:net:1907:16)\n    at listenInCluster (node:net:1964:12)\n    at Server.listen (node:net:2066:7)\n    at Function.listen (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\application.js:635:24)\n    at Object.<anonymous> (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\index.js:253:22)\n    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n    at Object..js (node:internal/modules/cjs/loader:1689:10)\n    at Module.load (node:internal/modules/cjs/loader:1318:32)\n    at Function._load (node:internal/modules/cjs/loader:1128:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)' }
+2025-04-03T05:52:00.853Z [INFO ] Starting log verification - { requestId: '58ea0181-de16-4a4d-91e8-9db69c7938c9', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T05:52:00.864Z [INFO ] Verification complete: VALID - { requestId: '58ea0181-de16-4a4d-91e8-9db69c7938c9', isValid: true, verificationTimeMs: 11, batchId: 800 }
+2025-04-03T05:52:16.969Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T05:52:16.973Z [WARN ] Access: GET /ws 404 3ms - { ip: '::1' }
+2025-04-03T05:52:30.414Z [INFO ] Starting log verification - { requestId: '315f52a5-73be-4adf-8da4-f73ee089b13b', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.399Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script ...' } }
+2025-04-03T05:52:30.419Z [WARN ] Log or proof not found in specified batch - { requestId: '315f52a5-73be-4adf-8da4-f73ee089b13b', batchId: 800, hasLogEntry: false, hasProof: false }
+2025-04-03T05:52:30.421Z [WARN ] [404] Log or proof not found in specified batch - { path: '/api/verify', method: 'POST', statusCode: 404, error: 'ApiError', context: { requestId: '315f52a5-73be-4adf-8da4-f73ee089b13b', batchId: 800 }, stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:315:11' }
+2025-04-03T05:52:30.423Z [WARN ] Access: POST /api/verify 404 9ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T05:55:00.005Z [INFO ] Starting scheduled batch processing
+2025-04-03T05:55:00.006Z [INFO ] Starting log batch processing
+2025-04-03T05:55:00.007Z [INFO ] No logs to process in this batch
+2025-04-03T05:56:33.848Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T05:56:33.851Z [WARN ] Access: GET /ws 404 4ms - { ip: '::1' }
+2025-04-03T06:00:00.004Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:00:00.004Z [INFO ] Starting log batch processing
+2025-04-03T06:00:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T06:05:00.004Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:05:00.005Z [INFO ] Starting log batch processing
+2025-04-03T06:05:00.008Z [INFO ] No logs to process in this batch
+2025-04-03T06:05:06.868Z [WARN ] [404] Route not found: GET /ws - { path: '/ws', method: 'GET', statusCode: 404, error: 'ApiError', context: {}, stack: 'ApiError: Route not found: GET /ws\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at notFoundMiddleware (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:118:8)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at requestLogger (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\requestLogger.js:43:3)\n    at Layer.handle [as handle_request] (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\router\\index.js:328:13)' }
+2025-04-03T06:05:06.871Z [WARN ] Access: GET /ws 404 4ms - { ip: '::1' }
+2025-04-03T06:10:00.006Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:10:00.007Z [INFO ] Starting log batch processing
+2025-04-03T06:10:00.009Z [INFO ] No logs to process in this batch
+2025-04-03T06:15:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:15:00.004Z [INFO ] Starting log batch processing
+2025-04-03T06:15:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T06:20:00.006Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:20:00.007Z [INFO ] Starting log batch processing
+2025-04-03T06:20:00.009Z [INFO ] No logs to process in this batch
+2025-04-03T06:25:00.004Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:25:00.004Z [INFO ] Starting log batch processing
+2025-04-03T06:25:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T06:30:00.004Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:30:00.005Z [INFO ] Starting log batch processing
+2025-04-03T06:30:00.007Z [INFO ] No logs to process in this batch
+2025-04-03T06:35:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:35:00.004Z [INFO ] Starting log batch processing
+2025-04-03T06:35:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T06:40:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:40:00.004Z [INFO ] Starting log batch processing
+2025-04-03T06:40:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T06:45:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:45:00.004Z [INFO ] Starting log batch processing
+2025-04-03T06:45:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T06:50:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:50:00.004Z [INFO ] Starting log batch processing
+2025-04-03T06:50:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T06:55:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T06:55:00.004Z [INFO ] Starting log batch processing
+2025-04-03T06:55:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T07:00:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:00:00.004Z [INFO ] Starting log batch processing
+2025-04-03T07:00:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T07:05:00.004Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:05:00.005Z [INFO ] Starting log batch processing
+2025-04-03T07:05:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T07:10:00.004Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:10:00.005Z [INFO ] Starting log batch processing
+2025-04-03T07:10:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T07:15:00.005Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:15:00.006Z [INFO ] Starting log batch processing
+2025-04-03T07:15:00.008Z [INFO ] No logs to process in this batch
+2025-04-03T07:20:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:20:00.004Z [INFO ] Starting log batch processing
+2025-04-03T07:20:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T07:25:00.002Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:25:00.003Z [INFO ] Starting log batch processing
+2025-04-03T07:25:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T07:30:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:30:00.004Z [INFO ] Starting log batch processing
+2025-04-03T07:30:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T07:35:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:35:00.004Z [INFO ] Starting log batch processing
+2025-04-03T07:35:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T07:40:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:40:00.004Z [INFO ] Starting log batch processing
+2025-04-03T07:40:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T07:45:00.006Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:45:00.007Z [INFO ] Starting log batch processing
+2025-04-03T07:45:00.009Z [INFO ] No logs to process in this batch
+2025-04-03T07:50:00.001Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:50:00.002Z [INFO ] Starting log batch processing
+2025-04-03T07:50:00.004Z [INFO ] No logs to process in this batch
+2025-04-03T07:55:00.002Z [INFO ] Starting scheduled batch processing
+2025-04-03T07:55:00.003Z [INFO ] Starting log batch processing
+2025-04-03T07:55:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T08:00:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:00:00.003Z [INFO ] Starting log batch processing
+2025-04-03T08:00:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T08:05:00.004Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:05:00.005Z [INFO ] Starting log batch processing
+2025-04-03T08:05:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T08:10:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:10:00.003Z [INFO ] Starting log batch processing
+2025-04-03T08:10:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T08:15:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:15:00.004Z [INFO ] Starting log batch processing
+2025-04-03T08:15:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T08:20:00.002Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:20:00.003Z [INFO ] Starting log batch processing
+2025-04-03T08:20:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T08:25:00.002Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:25:00.003Z [INFO ] Starting log batch processing
+2025-04-03T08:25:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T08:28:00.881Z [INFO ] Starting log verification - { requestId: 'eb073cbc-b4aa-4035-9009-494b5b903a35', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T08:28:00.891Z [INFO ] Verification complete: VALID - { requestId: 'eb073cbc-b4aa-4035-9009-494b5b903a35', isValid: true, verificationTimeMs: 10, batchId: 800 }
+2025-04-03T08:28:27.454Z [INFO ] Starting log verification - { requestId: '098c8653-3e32-4416-9936-30f53dc394c0', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.559Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa...' } }
+2025-04-03T08:28:27.463Z [WARN ] Log or proof not found in specified batch - { requestId: '098c8653-3e32-4416-9936-30f53dc394c0', batchId: 200, hasLogEntry: false, hasProof: false }
+2025-04-03T08:28:27.464Z [WARN ] [404] Log or proof not found in specified batch - { path: '/api/verify', method: 'POST', statusCode: 404, error: 'ApiError', context: { requestId: '098c8653-3e32-4416-9936-30f53dc394c0', batchId: 200 }, stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:315:11' }
+2025-04-03T08:28:27.468Z [WARN ] Access: POST /api/verify 404 13ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T08:29:57.335Z [INFO ] Starting log verification - { requestId: '8af93b17-bd68-41e2-9855-b0f56275e290', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T08:29:57.341Z [INFO ] Verification complete: VALID - { requestId: '8af93b17-bd68-41e2-9855-b0f56275e290', isValid: true, verificationTimeMs: 6, batchId: 800 }
+2025-04-03T08:29:58.282Z [INFO ] Starting log verification - { requestId: 'd157b4ec-9161-4a5c-ae69-80c716273f66', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.399Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script' } }
+2025-04-03T08:29:58.289Z [INFO ] Verification complete: VALID - { requestId: 'd157b4ec-9161-4a5c-ae69-80c716273f66', isValid: true, verificationTimeMs: 7, batchId: 800 }
+2025-04-03T08:29:58.986Z [INFO ] Starting log verification - { requestId: '42b37cc8-78b1-4656-b3f9-feb5ba506378', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.559Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T08:29:58.992Z [INFO ] Verification complete: VALID - { requestId: '42b37cc8-78b1-4656-b3f9-feb5ba506378', isValid: true, verificationTimeMs: 6, batchId: 200 }
+2025-04-03T08:29:59.619Z [INFO ] Starting log verification - { requestId: '8ee00cc8-23b9-4f0f-9e2f-76d64035bdbd', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.322Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script' } }
+2025-04-03T08:29:59.625Z [INFO ] Verification complete: VALID - { requestId: '8ee00cc8-23b9-4f0f-9e2f-76d64035bdbd', isValid: true, verificationTimeMs: 6, batchId: 200 }
+2025-04-03T08:30:00.002Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:30:00.003Z [INFO ] Starting log batch processing
+2025-04-03T08:30:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T08:30:01.374Z [INFO ] Starting log verification - { requestId: '4f4a94f5-9a84-40c4-9130-16362fe6b0cf', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:02:00Z', level: 'ERROR', source: 'db-service', messageSample: 'Failed to connect to database' } }
+2025-04-03T08:30:01.388Z [INFO ] Verification complete: VALID - { requestId: '4f4a94f5-9a84-40c4-9130-16362fe6b0cf', isValid: true, verificationTimeMs: 14, batchId: 274 }
+2025-04-03T08:30:02.044Z [INFO ] Starting log verification - { requestId: 'c7f5ee9d-9c7f-41b9-86b6-cd38269aa3a6', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:01:00Z', level: 'WARN', source: 'monitor-service', messageSample: 'High memory usage detected: 85...' } }
+2025-04-03T08:30:02.051Z [INFO ] Verification complete: VALID - { requestId: 'c7f5ee9d-9c7f-41b9-86b6-cd38269aa3a6', isValid: true, verificationTimeMs: 7, batchId: 274 }
+2025-04-03T08:30:02.762Z [INFO ] Starting log verification - { requestId: '8d999cc9-e853-40c3-96c3-01c26d383fe1', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:00:00Z', level: 'INFO', source: 'auth-service', messageSample: 'User alice logged in successfu...' } }
+2025-04-03T08:30:02.768Z [INFO ] Verification complete: VALID - { requestId: '8d999cc9-e853-40c3-96c3-01c26d383fe1', isValid: true, verificationTimeMs: 6, batchId: 274 }
+2025-04-03T08:30:42.535Z [INFO ] Starting log verification - { requestId: '49dc83ae-2c4c-4413-879e-4682f44f37ac', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T08:30:42.543Z [WARN ] Log or proof not found in specified batch - { requestId: '49dc83ae-2c4c-4413-879e-4682f44f37ac', batchId: 200, hasLogEntry: false, hasProof: false }
+2025-04-03T08:30:42.544Z [WARN ] [404] Log or proof not found in specified batch - { path: '/api/verify', method: 'POST', statusCode: 404, error: 'ApiError', context: { requestId: '49dc83ae-2c4c-4413-879e-4682f44f37ac', batchId: 200 }, stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:315:11' }
+2025-04-03T08:30:42.547Z [WARN ] Access: POST /api/verify 404 11ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T08:32:27.219Z [INFO ] Starting log verification - { requestId: '28b56e5d-5c46-429f-9b02-0a6bc9dd4574', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T08:32:27.224Z [INFO ] Verification complete: VALID - { requestId: '28b56e5d-5c46-429f-9b02-0a6bc9dd4574', isValid: true, verificationTimeMs: 5, batchId: 800 }
+2025-04-03T08:32:40.646Z [INFO ] Starting log verification - { requestId: 'd0670137-adf3-45f2-9aa9-5a96bca529f8', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verificationaaaa' } }
+2025-04-03T08:32:40.651Z [WARN ] Log or proof not found in specified batch - { requestId: 'd0670137-adf3-45f2-9aa9-5a96bca529f8', batchId: 800, hasLogEntry: false, hasProof: false }
+2025-04-03T08:32:40.653Z [WARN ] [404] Log or proof not found in specified batch - { path: '/api/verify', method: 'POST', statusCode: 404, error: 'ApiError', context: { requestId: 'd0670137-adf3-45f2-9aa9-5a96bca529f8', batchId: 800 }, stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:315:11' }
+2025-04-03T08:32:40.655Z [WARN ] Access: POST /api/verify 404 8ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T08:35:00.002Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:35:00.003Z [INFO ] Starting log batch processing
+2025-04-03T08:35:00.005Z [INFO ] No logs to process in this batch
+2025-04-03T08:37:49.638Z [INFO ] Starting log verification - { requestId: 'a71315fb-fc4c-4bfc-bfcc-3a0f441ba155', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa...' } }
+2025-04-03T08:37:49.643Z [WARN ] Log or proof not found in specified batch - { requestId: 'a71315fb-fc4c-4bfc-bfcc-3a0f441ba155', batchId: 800, hasLogEntry: false, hasProof: false }
+2025-04-03T08:37:49.644Z [WARN ] [404] Log or proof not found in specified batch - { path: '/api/verify', method: 'POST', statusCode: 404, error: 'ApiError', context: { requestId: 'a71315fb-fc4c-4bfc-bfcc-3a0f441ba155', batchId: 800 }, stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:315:11' }
+2025-04-03T08:37:49.647Z [WARN ] Access: POST /api/verify 404 8ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T08:38:26.208Z [INFO ] Starting log verification - { requestId: '24a889c4-83be-408d-8c26-f8659640a4e4', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa' } }
+2025-04-03T08:38:26.212Z [WARN ] Log or proof not found in specified batch - { requestId: '24a889c4-83be-408d-8c26-f8659640a4e4', batchId: 800, hasLogEntry: false, hasProof: false }
+2025-04-03T08:38:26.214Z [WARN ] [404] Log or proof not found in specified batch - { path: '/api/verify', method: 'POST', statusCode: 404, error: 'ApiError', context: { requestId: '24a889c4-83be-408d-8c26-f8659640a4e4', batchId: 800 }, stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:315:11' }
+2025-04-03T08:38:26.216Z [WARN ] Access: POST /api/verify 404 8ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T08:39:08.870Z [INFO ] Starting log verification - { requestId: '55c42ae2-8105-462e-92de-36a8efc75b8a', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T08:39:08.876Z [INFO ] Verification complete: VALID - { requestId: '55c42ae2-8105-462e-92de-36a8efc75b8a', isValid: true, verificationTimeMs: 6, batchId: 800 }
+2025-04-03T08:39:11.124Z [INFO ] Starting log verification - { requestId: 'd1e99fcc-8333-47b5-a25a-9abd15a50885', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:02:00Z', level: 'ERROR', source: 'db-service', messageSample: 'Failed to connect to database' } }
+2025-04-03T08:39:11.132Z [INFO ] Verification complete: VALID - { requestId: 'd1e99fcc-8333-47b5-a25a-9abd15a50885', isValid: true, verificationTimeMs: 8, batchId: 274 }
+2025-04-03T08:40:00.001Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:40:00.002Z [INFO ] Starting log batch processing
+2025-04-03T08:40:00.004Z [INFO ] No logs to process in this batch
+2025-04-03T08:42:03.769Z [INFO ] Loaded configuration from config file
+2025-04-03T08:45:00.006Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:45:00.007Z [INFO ] Starting log batch processing
+2025-04-03T08:45:00.008Z [INFO ] No logs to process in this batch
+2025-04-03T08:45:04.196Z [INFO ] Starting log verification - { requestId: 'ed19a4ac-eb52-4b60-bfe0-61e1b1c527d2', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T08:45:04.201Z [INFO ] Verification complete: VALID - { requestId: 'ed19a4ac-eb52-4b60-bfe0-61e1b1c527d2', isValid: true, verificationTimeMs: 5, batchId: 800 }
+2025-04-03T08:45:07.002Z [INFO ] Starting log verification - { requestId: 'a10cf58f-2b18-4fe4-994f-69bf67f2c766', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.399Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script' } }
+2025-04-03T08:45:07.008Z [INFO ] Verification complete: VALID - { requestId: 'a10cf58f-2b18-4fe4-994f-69bf67f2c766', isValid: true, verificationTimeMs: 6, batchId: 800 }
+2025-04-03T08:45:08.697Z [INFO ] Starting log verification - { requestId: '790bf6a5-7192-4cc2-a779-c00a19d63c42', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.559Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T08:45:08.703Z [INFO ] Verification complete: VALID - { requestId: '790bf6a5-7192-4cc2-a779-c00a19d63c42', isValid: true, verificationTimeMs: 6, batchId: 200 }
+2025-04-03T08:45:11.706Z [INFO ] Starting log verification - { requestId: '43febd68-986e-4198-8cf1-3773ba696353', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.322Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script' } }
+2025-04-03T08:45:11.713Z [INFO ] Verification complete: VALID - { requestId: '43febd68-986e-4198-8cf1-3773ba696353', isValid: true, verificationTimeMs: 7, batchId: 200 }
+2025-04-03T08:45:38.007Z [INFO ] Starting log verification - { requestId: 'ec0a58d1-70c7-46f3-bfef-5d9d45770b00', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa...' } }
+2025-04-03T08:45:38.012Z [WARN ] Log or proof not found in specified batch - { requestId: 'ec0a58d1-70c7-46f3-bfef-5d9d45770b00', batchId: 800, hasLogEntry: false, hasProof: false }
+2025-04-03T08:45:38.013Z [WARN ] [404] Log or proof not found in specified batch - { path: '/api/verify', method: 'POST', statusCode: 404, error: 'ApiError', context: { requestId: 'ec0a58d1-70c7-46f3-bfef-5d9d45770b00', batchId: 800 }, stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:315:11' }
+2025-04-03T08:45:38.016Z [WARN ] Access: POST /api/verify 404 8ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T08:46:58.474Z [INFO ] Received shutdown signal, closing server...
+2025-04-03T08:46:58.476Z [INFO ] Server closed, exiting process
+2025-04-03T08:47:02.326Z [INFO ] Loaded configuration from config file
+2025-04-03T08:47:35.392Z [INFO ] Loaded configuration from config file
+2025-04-03T08:47:37.580Z [INFO ] API: Loaded configuration from config file
+2025-04-03T08:47:37.592Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-03T08:47:37.593Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-03T08:47:37.596Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-03T08:47:37.629Z [INFO ] Next batch processing scheduled for 2025-04-03T08:50:00.000Z
+2025-04-03T08:47:37.629Z [INFO ] Services initialized successfully
+2025-04-03T08:47:37.629Z [INFO ] Service startup complete
+2025-04-03T08:48:28.428Z [INFO ] Loaded configuration from config file
+2025-04-03T08:48:29.453Z [INFO ] API: Loaded configuration from config file
+2025-04-03T08:48:29.466Z [ERROR] Uncaught exception - { error: 'listen EADDRINUSE: address already in use :::3000', stack: 'Error: listen EADDRINUSE: address already in use :::3000\n    at Server.setupListenHandle [as _listen2] (node:net:1907:16)\n    at listenInCluster (node:net:1964:12)\n    at Server.listen (node:net:2066:7)\n    at Function.listen (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\application.js:635:24)\n    at Object.<anonymous> (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\index.js:253:22)\n    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n    at Object..js (node:internal/modules/cjs/loader:1689:10)\n    at Module.load (node:internal/modules/cjs/loader:1318:32)\n    at Function._load (node:internal/modules/cjs/loader:1128:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)' }
+2025-04-03T08:49:07.510Z [INFO ] Starting log verification - { requestId: 'dc7f8db4-6799-41c4-b366-8b835d664128', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T08:49:07.517Z [INFO ] Verification complete: VALID - { requestId: 'dc7f8db4-6799-41c4-b366-8b835d664128', isValid: true, reason: null, verificationTimeMs: 7, batchId: 800 }
+2025-04-03T08:49:17.297Z [INFO ] Starting log verification - { requestId: '03c42b72-0301-4842-b653-a949a4cddab1', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa' } }
+2025-04-03T08:49:17.299Z [WARN ] Log or proof not found in specified batch - { requestId: '03c42b72-0301-4842-b653-a949a4cddab1', batchId: 800, hasLogEntry: false, hasProof: false }
+2025-04-03T08:49:17.300Z [ERROR] Error during verification process - { requestId: '03c42b72-0301-4842-b653-a949a4cddab1', error: 'Log or proof not found in specified batch', stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:321:11' }
+2025-04-03T08:49:17.302Z [WARN ] Access: POST /verify 404 4ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T08:50:00.010Z [INFO ] Starting scheduled batch processing
+2025-04-03T08:50:00.010Z [INFO ] Starting log batch processing
+2025-04-03T08:50:00.012Z [INFO ] No logs to process in this batch
+2025-04-03T08:50:07.788Z [INFO ] Loaded configuration from config file
+2025-04-03T08:50:08.908Z [INFO ] API: Loaded configuration from config file
+2025-04-03T08:50:08.923Z [ERROR] Uncaught exception - { error: 'listen EADDRINUSE: address already in use :::3000', stack: 'Error: listen EADDRINUSE: address already in use :::3000\n    at Server.setupListenHandle [as _listen2] (node:net:1907:16)\n    at listenInCluster (node:net:1964:12)\n    at Server.listen (node:net:2066:7)\n    at Function.listen (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\node_modules\\express\\lib\\application.js:635:24)\n    at Object.<anonymous> (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\index.js:253:22)\n    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n    at Object..js (node:internal/modules/cjs/loader:1689:10)\n    at Module.load (node:internal/modules/cjs/loader:1318:32)\n    at Function._load (node:internal/modules/cjs/loader:1128:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)' }
+2025-04-03T08:52:37.241Z [INFO ] Loaded configuration from config file
+2025-04-03T08:52:38.440Z [INFO ] API: Loaded configuration from config file
+2025-04-03T08:52:38.455Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-03T08:52:38.455Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-03T08:52:38.459Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-03T08:52:38.496Z [INFO ] Next batch processing scheduled for 2025-04-03T08:55:00.000Z
+2025-04-03T08:52:38.497Z [INFO ] Services initialized successfully
+2025-04-03T08:52:38.497Z [INFO ] Service startup complete
+2025-04-03T08:53:19.014Z [WARN ] Authentication attempt with missing or invalid Authorization header - { ip: '::1', path: '/logs' }
+2025-04-03T08:59:48.637Z [INFO ] Loaded configuration from config file
+2025-04-03T08:59:49.705Z [INFO ] API: Loaded configuration from config file
+2025-04-03T08:59:49.719Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-03T08:59:49.720Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-03T08:59:49.724Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-03T08:59:49.758Z [INFO ] Next batch processing scheduled for 2025-04-03T09:00:00.000Z
+2025-04-03T08:59:49.759Z [INFO ] Services initialized successfully
+2025-04-03T08:59:49.760Z [INFO ] Service startup complete
+2025-04-03T09:00:00.009Z [INFO ] Starting scheduled batch processing
+2025-04-03T09:00:00.010Z [INFO ] Starting log batch processing
+2025-04-03T09:00:00.012Z [INFO ] No logs to process in this batch
+2025-04-03T09:00:00.175Z [INFO ] Starting log verification - { requestId: '51f34b57-6368-48ef-83e1-67c749134e59', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:01:00Z', level: 'WARN', source: 'monitor-service', messageSample: 'High memory usage detected: 85...' } }
+2025-04-03T09:00:00.192Z [INFO ] Verification complete: VALID - { requestId: '51f34b57-6368-48ef-83e1-67c749134e59', isValid: true, reason: null, verificationTimeMs: 17, batchId: 166 }
+2025-04-03T09:00:00.212Z [INFO ] Starting log verification - { requestId: '6faf8dc5-1be9-478e-aa86-e912df00e2a4', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:01:00Z', level: 'WARN', source: 'monitor-service', messageSample: 'High memory usage detected: 95...' } }
+2025-04-03T09:00:00.218Z [WARN ] Log or proof not found in specified batch - { requestId: '6faf8dc5-1be9-478e-aa86-e912df00e2a4', batchId: 166, hasLogEntry: false, hasProof: false }
+2025-04-03T09:00:00.220Z [ERROR] Error during verification process - { requestId: '6faf8dc5-1be9-478e-aa86-e912df00e2a4', error: 'Log or proof not found in specified batch', stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:321:11' }
+2025-04-03T09:00:00.222Z [WARN ] Access: POST /verify 404 9ms - { ip: '::1' }
+2025-04-03T09:04:17.731Z [INFO ] Starting log verification - { requestId: '5a74b077-47a3-41b9-96a8-17126a80052b', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T09:04:17.738Z [INFO ] Verification complete: VALID - { requestId: '5a74b077-47a3-41b9-96a8-17126a80052b', isValid: true, reason: null, verificationTimeMs: 7, batchId: 800 }
+2025-04-03T09:04:46.768Z [INFO ] Starting log verification - { requestId: 'c4dc7fbc-116f-494f-9cf3-d035a348f9b1', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa...' } }
+2025-04-03T09:04:46.774Z [WARN ] Log or proof not found in specified batch - { requestId: 'c4dc7fbc-116f-494f-9cf3-d035a348f9b1', batchId: 800, hasLogEntry: false, hasProof: false }
+2025-04-03T09:04:46.775Z [ERROR] Error during verification process - { requestId: 'c4dc7fbc-116f-494f-9cf3-d035a348f9b1', error: 'Log or proof not found in specified batch', stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:321:11' }
+2025-04-03T09:04:46.779Z [WARN ] Access: POST /verify 404 10ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T09:05:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-03T09:05:00.004Z [INFO ] Starting log batch processing
+2025-04-03T09:05:00.006Z [INFO ] No logs to process in this batch
+2025-04-03T09:05:10.594Z [INFO ] Received shutdown signal, closing server...
+2025-04-03T09:05:10.596Z [INFO ] Server closed, exiting process
+2025-04-03T09:05:21.264Z [INFO ] Loaded configuration from config file
+2025-04-03T09:05:22.318Z [INFO ] API: Loaded configuration from config file
+2025-04-03T09:05:22.334Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-03T09:05:22.335Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-03T09:05:22.339Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-03T09:05:22.378Z [INFO ] Next batch processing scheduled for 2025-04-03T09:10:00.000Z
+2025-04-03T09:05:22.379Z [INFO ] Services initialized successfully
+2025-04-03T09:05:22.380Z [INFO ] Service startup complete
+2025-04-03T09:05:34.693Z [INFO ] Starting log verification - { requestId: '4a258546-cc3d-4b49-b0ff-be135d470cd1', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T09:05:34.706Z [INFO ] Verification complete: VALID - { requestId: '4a258546-cc3d-4b49-b0ff-be135d470cd1', isValid: true, reason: null, verificationTimeMs: 13, batchId: 800 }
+2025-04-03T09:05:37.083Z [INFO ] Starting log verification - { requestId: 'ca8daa00-041e-4413-970c-a1f2cc0170f2', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:02:00Z', level: 'ERROR', source: 'db-service', messageSample: 'Failed to connect to database' } }
+2025-04-03T09:05:37.092Z [INFO ] Verification complete: VALID - { requestId: 'ca8daa00-041e-4413-970c-a1f2cc0170f2', isValid: true, reason: null, verificationTimeMs: 8, batchId: 274 }
+2025-04-03T09:05:55.573Z [INFO ] Starting log verification - { requestId: '14aae0dc-29bc-4284-89c9-51b955ba3d02', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.559Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa...' } }
+2025-04-03T09:05:55.578Z [WARN ] Log or proof not found in specified batch - { requestId: '14aae0dc-29bc-4284-89c9-51b955ba3d02', batchId: 200, hasLogEntry: false, hasProof: false }
+2025-04-03T09:05:55.580Z [ERROR] Error during verification process - { requestId: '14aae0dc-29bc-4284-89c9-51b955ba3d02', error: 'Log or proof not found in specified batch', stack: 'ApiError: Log or proof not found in specified batch\n    at notFound (G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\utils\\errorHandler.js:29:10)\n    at G:\\Documents\\AA ITB\\BlockchainLog\\aggregation-service\\src\\api\\logApi.js:321:11' }
+2025-04-03T09:05:55.583Z [WARN ] Access: POST /verify 404 9ms - { ip: '::ffff:127.0.0.1' }
+2025-04-03T09:07:25.615Z [INFO ] Received shutdown signal, closing server...
+2025-04-03T09:07:25.617Z [INFO ] Server closed, exiting process
+2025-04-03T09:07:27.749Z [INFO ] Loaded configuration from config file
+2025-04-03T09:07:28.773Z [INFO ] API: Loaded configuration from config file
+2025-04-03T09:07:28.788Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-03T09:07:28.789Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-03T09:07:28.792Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-03T09:07:28.830Z [INFO ] Next batch processing scheduled for 2025-04-03T09:10:00.000Z
+2025-04-03T09:07:28.830Z [INFO ] Services initialized successfully
+2025-04-03T09:07:28.831Z [INFO ] Service startup complete
+2025-04-03T09:07:42.602Z [INFO ] Starting log verification - { requestId: '79c96804-9306-45c4-8c11-1604d19ea48a', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa...' } }
+2025-04-03T09:07:42.614Z [INFO ] Verification complete: VALID - { requestId: '79c96804-9306-45c4-8c11-1604d19ea48a', isValid: true, reason: null, verificationTimeMs: 12, batchId: 800 }
+2025-04-03T09:07:55.256Z [INFO ] Starting log verification - { requestId: '0b8175eb-be00-4b3b-befc-bc743d544c05', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T09:07:55.262Z [INFO ] Verification complete: VALID - { requestId: '0b8175eb-be00-4b3b-befc-bc743d544c05', isValid: true, reason: null, verificationTimeMs: 6, batchId: 800 }
+2025-04-03T09:08:10.801Z [INFO ] Starting log verification - { requestId: '52cfc2c4-1d8d-4060-9f53-82da0737d73a', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa...' } }
+2025-04-03T09:08:10.810Z [INFO ] Verification complete: VALID - { requestId: '52cfc2c4-1d8d-4060-9f53-82da0737d73a', isValid: true, reason: null, verificationTimeMs: 9, batchId: 800 }
+2025-04-03T09:09:40.213Z [INFO ] Received shutdown signal, closing server...
+2025-04-03T09:09:40.215Z [INFO ] Server closed, exiting process
+2025-04-03T09:09:42.870Z [INFO ] Loaded configuration from config file
+2025-04-03T09:10:24.400Z [INFO ] Loaded configuration from config file
+2025-04-03T09:10:25.438Z [INFO ] API: Loaded configuration from config file
+2025-04-03T09:10:25.453Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-03T09:10:25.454Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-03T09:10:25.458Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-03T09:10:25.497Z [INFO ] Next batch processing scheduled for 2025-04-03T09:15:00.000Z
+2025-04-03T09:10:25.497Z [INFO ] Services initialized successfully
+2025-04-03T09:10:25.498Z [INFO ] Service startup complete
+2025-04-03T09:10:33.953Z [INFO ] Starting log verification - { requestId: '7196030c-68dc-4c3d-acf7-ee135e8e265d', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T09:10:33.965Z [INFO ] Verification complete: VALID - { requestId: '7196030c-68dc-4c3d-acf7-ee135e8e265d', isValid: true, reason: null, verificationTimeMs: 12, batchId: 800 }
+2025-04-03T09:10:46.986Z [INFO ] Starting log verification - { requestId: '50ddac5d-6be5-4385-bbbb-e743ba8adc8e', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa...' } }
+2025-04-03T09:10:46.994Z [INFO ] Forcing verification failure due to log content discrepancies - { requestId: '50ddac5d-6be5-4385-bbbb-e743ba8adc8e', discrepancies: [ 'message' ] }
+2025-04-03T09:10:46.995Z [INFO ] Verification complete: INVALID - { requestId: '50ddac5d-6be5-4385-bbbb-e743ba8adc8e', isValid: false, reason: 'LOG_CONTENT_MISMATCH', verificationTimeMs: 8, batchId: 800 }
+2025-04-03T09:10:49.315Z [INFO ] Starting log verification - { requestId: '1a9c3edf-2703-49b9-87cf-21e005df936b', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.559Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T09:10:49.322Z [INFO ] Verification complete: VALID - { requestId: '1a9c3edf-2703-49b9-87cf-21e005df936b', isValid: true, reason: null, verificationTimeMs: 7, batchId: 200 }
+2025-04-03T09:10:50.913Z [INFO ] Starting log verification - { requestId: '3e7f6838-b844-43dd-863d-fea5ff1feac9', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.399Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script' } }
+2025-04-03T09:10:50.919Z [INFO ] Verification complete: VALID - { requestId: '3e7f6838-b844-43dd-863d-fea5ff1feac9', isValid: true, reason: null, verificationTimeMs: 6, batchId: 800 }
+2025-04-03T09:10:53.590Z [INFO ] Starting log verification - { requestId: '823ac743-776f-4c37-b460-60171fb120ef', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.322Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script' } }
+2025-04-03T09:10:53.597Z [INFO ] Verification complete: VALID - { requestId: '823ac743-776f-4c37-b460-60171fb120ef', isValid: true, reason: null, verificationTimeMs: 7, batchId: 200 }
+2025-04-03T09:10:54.625Z [INFO ] Starting log verification - { requestId: '126e2cf1-25c8-4b39-a162-812a3e78100c', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:02:00Z', level: 'ERROR', source: 'db-service', messageSample: 'Failed to connect to database' } }
+2025-04-03T09:10:54.632Z [INFO ] Verification complete: VALID - { requestId: '126e2cf1-25c8-4b39-a162-812a3e78100c', isValid: true, reason: null, verificationTimeMs: 7, batchId: 274 }
+2025-04-03T09:10:55.403Z [INFO ] Starting log verification - { requestId: '42046183-312c-4fce-9ac1-1551ae32e234', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:01:00Z', level: 'WARN', source: 'monitor-service', messageSample: 'High memory usage detected: 85...' } }
+2025-04-03T09:10:55.410Z [INFO ] Verification complete: VALID - { requestId: '42046183-312c-4fce-9ac1-1551ae32e234', isValid: true, reason: null, verificationTimeMs: 7, batchId: 274 }
+2025-04-03T09:10:56.057Z [INFO ] Starting log verification - { requestId: '450880d1-6aa3-4ac9-a41b-a6353cbca581', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:00:00Z', level: 'INFO', source: 'auth-service', messageSample: 'User alice logged in successfu...' } }
+2025-04-03T09:10:56.063Z [INFO ] Verification complete: VALID - { requestId: '450880d1-6aa3-4ac9-a41b-a6353cbca581', isValid: true, reason: null, verificationTimeMs: 6, batchId: 274 }
+2025-04-03T09:10:56.930Z [INFO ] Starting log verification - { requestId: '6eb52a10-ace3-445e-963c-6f0b1b41dfc2', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:02:00Z', level: 'ERROR', source: 'db-service', messageSample: 'Failed to connect to database' } }
+2025-04-03T09:10:56.937Z [INFO ] Verification complete: VALID - { requestId: '6eb52a10-ace3-445e-963c-6f0b1b41dfc2', isValid: true, reason: null, verificationTimeMs: 7, batchId: 166 }
+2025-04-03T09:10:58.299Z [INFO ] Starting log verification - { requestId: '3b852bdf-471a-400d-947d-841663a9375b', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:01:00Z', level: 'WARN', source: 'monitor-service', messageSample: 'High memory usage detected: 85...' } }
+2025-04-03T09:10:58.305Z [INFO ] Verification complete: VALID - { requestId: '3b852bdf-471a-400d-947d-841663a9375b', isValid: true, reason: null, verificationTimeMs: 6, batchId: 166 }
+2025-04-03T09:11:00.112Z [INFO ] Starting log verification - { requestId: '5159bf68-83b2-4e3f-90de-24cad36546c5', hasBatchId: true, logDetails: { timestamp: '2025-03-31T10:00:00Z', level: 'INFO', source: 'auth-service', messageSample: 'User alice logged in successfu...' } }
+2025-04-03T09:11:00.117Z [INFO ] Verification complete: VALID - { requestId: '5159bf68-83b2-4e3f-90de-24cad36546c5', isValid: true, reason: null, verificationTimeMs: 5, batchId: 166 }
+2025-04-03T09:12:32.770Z [INFO ] Starting log verification - { requestId: '364b331b-5559-42ad-8212-b4c535f703dd', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api-dupe.js', messageSample: 'Test log for verification' } }
+2025-04-03T09:12:32.780Z [INFO ] Forcing verification failure due to log content discrepancies - { requestId: '364b331b-5559-42ad-8212-b4c535f703dd', discrepancies: [ 'source' ] }
+2025-04-03T09:12:32.782Z [INFO ] Verification complete: INVALID - { requestId: '364b331b-5559-42ad-8212-b4c535f703dd', isValid: false, reason: 'LOG_CONTENT_MISMATCH', verificationTimeMs: 10, batchId: 800 }
+2025-04-03T09:15:00.008Z [INFO ] Starting scheduled batch processing
+2025-04-03T09:15:00.009Z [INFO ] Starting log batch processing
+2025-04-03T09:15:00.013Z [INFO ] No logs to process in this batch
+2025-04-03T09:17:15.837Z [INFO ] Starting log verification - { requestId: '3e49cc44-4664-40b2-a272-887342d91f6c', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T09:17:15.842Z [INFO ] Verification complete: VALID - { requestId: '3e49cc44-4664-40b2-a272-887342d91f6c', isValid: true, reason: null, verificationTimeMs: 5, batchId: 800 }
+2025-04-03T09:17:18.571Z [INFO ] Starting log verification - { requestId: 'e1033678-ac26-4f90-bb8d-5216d3a78d29', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.559Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T09:17:18.577Z [INFO ] Verification complete: VALID - { requestId: 'e1033678-ac26-4f90-bb8d-5216d3a78d29', isValid: true, reason: null, verificationTimeMs: 6, batchId: 200 }
+2025-04-03T09:17:20.124Z [INFO ] Starting log verification - { requestId: '1c271f3d-356c-4ac4-839a-fb9aff735c42', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.322Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script' } }
+2025-04-03T09:17:20.129Z [INFO ] Verification complete: VALID - { requestId: '1c271f3d-356c-4ac4-839a-fb9aff735c42', isValid: true, reason: null, verificationTimeMs: 5, batchId: 200 }
+2025-04-03T09:17:53.469Z [INFO ] Starting log verification - { requestId: 'b35fb982-07d5-4209-a279-9be3e32da650', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.411Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification aaaa' } }
+2025-04-03T09:17:53.475Z [INFO ] Forcing verification failure due to log content discrepancies - { requestId: 'b35fb982-07d5-4209-a279-9be3e32da650', discrepancies: [ 'message' ] }
+2025-04-03T09:17:53.477Z [INFO ] Verification complete: INVALID - { requestId: 'b35fb982-07d5-4209-a279-9be3e32da650', isValid: false, reason: 'LOG_CONTENT_MISMATCH', verificationTimeMs: 6, batchId: 800 }
+2025-04-03T09:18:07.282Z [INFO ] Starting log verification - { requestId: 'c18bf5c2-68fb-4b2a-bf19-73014b0da1dc', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:45:15.399Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script' } }
+2025-04-03T09:18:07.287Z [INFO ] Verification complete: VALID - { requestId: 'c18bf5c2-68fb-4b2a-bf19-73014b0da1dc', isValid: true, reason: null, verificationTimeMs: 5, batchId: 800 }
+2025-04-03T09:18:08.391Z [INFO ] Starting log verification - { requestId: 'dfd89a6a-40cf-4a39-8189-2aa507cfbd0b', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.559Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log for verification' } }
+2025-04-03T09:18:08.396Z [INFO ] Verification complete: VALID - { requestId: 'dfd89a6a-40cf-4a39-8189-2aa507cfbd0b', isValid: true, reason: null, verificationTimeMs: 5, batchId: 200 }
+2025-04-03T09:18:09.943Z [INFO ] Starting log verification - { requestId: '61189036-bf3f-474f-b57d-b08ebde2a43b', hasBatchId: true, logDetails: { timestamp: '2025-04-01T07:39:07.322Z', level: 'INFO', source: 'test-api.js', messageSample: 'Test log from API test script' } }
+2025-04-03T09:18:09.948Z [INFO ] Verification complete: VALID - { requestId: '61189036-bf3f-474f-b57d-b08ebde2a43b', isValid: true, reason: null, verificationTimeMs: 5, batchId: 200 }
+2025-04-03T09:20:00.006Z [INFO ] Starting scheduled batch processing
+2025-04-03T09:20:00.007Z [INFO ] Starting log batch processing
+2025-04-03T09:20:00.009Z [INFO ] No logs to process in this batch
+2025-04-03T09:25:00.004Z [INFO ] Starting scheduled batch processing
+2025-04-03T09:25:00.005Z [INFO ] Starting log batch processing
+2025-04-03T09:25:00.007Z [INFO ] No logs to process in this batch
+2025-04-03T09:26:47.557Z [INFO ] Received shutdown signal, closing server...
+2025-04-03T09:26:47.559Z [INFO ] Server closed, exiting process

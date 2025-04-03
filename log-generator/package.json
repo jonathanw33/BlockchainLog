@@ -1,0 +1,16 @@
+{
+  "name": "log-generator",
+  "version": "1.0.0",
+  "description": "Test component that simulates log creation",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "commander": "^9.4.0",
+    "date-fns": "^2.29.3",
+    "fs-extra": "^10.1.0",
+    "config": "^3.3.8"
+  }
+}

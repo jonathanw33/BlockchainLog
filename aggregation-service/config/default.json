@@ -1,0 +1,22 @@
+{
+  "server": {
+    "port": 3000
+  },
+  "auth": {
+    "username": "admin",
+    "password": "changeme"
+  },
+  "storage": {
+    "tempPath": "../log-archive/temp",
+    "archivePath": "../log-archive/archive"
+  },
+  "processing": {
+    "batchIntervalMinutes": 5
+  },
+  "blockchain": {
+    "testMode": true,
+    "provider": "https://sepolia.infura.io/v3/YOUR_INFURA_KEY",
+    "contractAddress": "0x0000000000000000000000000000000000000000",
+    "privateKey": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

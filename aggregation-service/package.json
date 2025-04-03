@@ -1,0 +1,27 @@
+{
+  "name": "aggregation-service",
+  "version": "1.0.0",
+  "description": "Core backend service for log processing and blockchain interaction",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node test.js",
+    "test:api": "node test-api.js"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "cors": "^2.8.5",
+    "helmet": "^6.0.0",
+    "ethers": "^5.7.0",
+    "merkletreejs": "^0.3.0",
+    "keccak256": "^1.0.6",
+    "node-schedule": "^2.1.0",
+    "winston": "^3.8.2",
+    "config": "^3.3.8",
+    "fs-extra": "^10.1.0",
+    "body-parser": "^1.20.0",
+    "date-fns": "^2.29.3",
+    "uuid": "^9.0.0",
+    "axios": "^1.2.0"
+  }
+}

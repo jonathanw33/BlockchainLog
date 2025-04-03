@@ -1,0 +1,35 @@
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.blockchain-icon {
+  animation: float 6s ease-in-out infinite;
+}
+
+.blockchain-icon path {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.security-icon {
+  animation: pulse 2s ease-in-out infinite;
+}

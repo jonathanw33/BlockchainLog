@@ -1,0 +1,27 @@
+{
+  "output": {
+    "directory": "../logs",
+    "filename": "application.log",
+    "api": {
+      "url": "https://blockchain-log-production.up.railway.app/api/logs",
+      "auth": {
+        "username": "admin",
+        "password": "changeme"
+      },
+      "enabled": true
+    }
+  },
+  "generation": {
+    "rate": 10,
+    "format": "json"
+  },
+  "templates": [
+    {"level": "INFO", "message": "User '{user}' logged in successfully", "source": "auth-service"},
+    {"level": "ERROR", "message": "Failed to connect to database", "source": "db-service"},
+    {"level": "WARN", "message": "High memory usage detected: {usage}%", "source": "monitor-service"}
+  ],
+  "variables": {
+    "user": ["alice", "bob", "charlie", "dave", "eve"],
+    "usage": [75, 80, 85, 90, 95]
+  }
+}
