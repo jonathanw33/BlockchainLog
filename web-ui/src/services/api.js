@@ -210,10 +210,13 @@ export const api = {
     
     try {
       const payload = { log };
-      if (batchId) {
+      // Important: Include batchId: 0 in the payload if batchId is 0
+      // Only exclude batchId if it's null or undefined
+      if (batchId !== null && batchId !== undefined) {
         payload.batchId = batchId;
       }
       
+      console.log(`Verifying log with payload:`, payload);
       const response = await apiClient.post('/verify', payload);
       return response.data;
     } catch (error) {
@@ -222,7 +225,7 @@ export const api = {
   },
   
   // Get recent logs (demo or real)
-  getRecentLogs: async () => {
+  getRecentLogs: async (limit = 50) => {
     if (useSimulationMode) {
       console.log(`Getting recent logs (simulation mode). Data version: ${simulationDataVersion}`);
       console.log(`Log count: ${simulatedData.logs.length}`);
@@ -230,7 +233,7 @@ export const api = {
     }
     
     try {
-      const response = await apiClient.get('/logs/recent');
+      const response = await apiClient.get(`/logs/recent?limit=${limit}`);
       
       // Handle both the old and new response formats
       // New format returns an object with logs array, old format returns array directly

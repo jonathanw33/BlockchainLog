@@ -36,7 +36,7 @@ const LogBrowser = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(50);
   
   // Filters
   const [filters, setFilters] = useState({
@@ -269,7 +269,7 @@ const LogBrowser = () => {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[10, 25, 50, 100]}
           component="div"
           count={filteredLogs.length}
           rowsPerPage={rowsPerPage}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DemoInstructions from './DemoInstructions';
+import VerificationVisualizer from '../verification/VerificationVisualizer';
 import {
   Paper,
   Typography,
@@ -65,7 +66,7 @@ const EnhancedLogBrowser = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(50);
   const [verifyingLogId, setVerifyingLogId] = useState(null);
   const [verificationResults, setVerificationResults] = useState({});
   const [selectedLog, setSelectedLog] = useState(null);
@@ -389,17 +390,31 @@ const EnhancedLogBrowser = () => {
 
 
       // --- Original API call logic ---
-      // Call verification API
-      const result = await api.verifyLog(log, log.batchId); // Verify the potentially edited log
+      // Call verification API - properly handle batch ID 0
+      // Note: log.batchId might be 0, which is a valid batch ID
+      const result = await api.verifyLog(log, log.batchId !== undefined ? log.batchId : null);
 
-      // Store the actual API verification result
+      // Enhanced logging to console for debugging
+      if (result.verificationSteps) {
+        console.log('Verification steps detail:', result.verificationSteps);
+      }
+      
+      // Store the actual API verification result with enhanced details
       setVerificationResults(prevResults => ({
         ...prevResults,
         [log.id]: {
             ...result,
-             // Add simulatedFailure flag based on the mode ACTIVE at time of verification,
-             // but only if it actually failed verification
-            simulatedFailure: tamperSimulationActive && !result.verified
+            // Add simulatedFailure flag based on the mode ACTIVE at time of verification,
+            // but only if it actually failed verification
+            simulatedFailure: tamperSimulationActive && !result.verified,
+            // Format any detailed discrepancies for display
+            formattedDiscrepancies: result.diagnosticInfo?.discrepancies?.map(field => ({
+              field,
+              expected: result.log[field],
+              received: log[field],
+              // Add a readable message
+              message: `${field.charAt(0).toUpperCase() + field.slice(1)}: MISMATCH ('${log[field]}' vs '${result.log[field]}')`
+            })) || []
         }
       }));
 
@@ -1106,121 +1121,31 @@ const EnhancedLogBrowser = () => {
 
               {/* Column 2: Verification & Merkle */}
               <Grid item xs={12} md={6}>
-                 <Typography variant="h6" gutterBottom> {/* Use h6 */}
-                  Verification Status
-                </Typography>
-                <Paper variant="outlined" sx={{ p: 2, mb: 3 }}> {/* Add margin bottom */}
-                  {verifyingLogId === selectedLog.id ? (
-                      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', py: 2 }}>
-                           <CircularProgress size={24} sx={{ mr: 1 }} />
-                           <Typography>Verifying...</Typography>
-                      </Box>
-                  ) : verificationResults[selectedLog.id] ? (
-                    <>
-                      <Box sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        mb: 1, // Reduced margin
-                        color: verificationResults[selectedLog.id].verified ? 'success.main' : 'error.main'
-                      }}>
-                        {verificationResults[selectedLog.id].verified ? (
-                          <CheckIcon sx={{ mr: 1 }} />
-                        ) : (
-                          <ClearIcon sx={{ mr: 1 }} />
-                        )}
-                        <Typography variant="h6" component="span">
-                          {verificationResults[selectedLog.id].verified ? 'VERIFIED' : 'VERIFICATION FAILED'}
-                        </Typography>
-                      </Box>
-
-                      {/* Enhanced failure reason with detailed explanation */}
-                      {!verificationResults[selectedLog.id].verified && (
-                          <Box sx={{ mb: 2, border: '1px solid rgba(244, 67, 54, 0.2)', borderRadius: 1, p: 1, bgcolor: 'rgba(244, 67, 54, 0.05)' }}>
-                            <Typography variant="body2" color="error" sx={{ fontWeight: 'bold' }}>
-                              Verification Failed
-                            </Typography>
-                            
-                            {verificationResults[selectedLog.id].simulatedFailure ? (
-                              <>
-                                <Typography variant="body2" color="error" sx={{ mt: 0.5 }}>
-                                  Reason: Failed due to simulated tampering.
-                                </Typography>
-                                <Typography variant="body2" sx={{ mt: 1, fontSize: '0.85rem' }}>
-                                  The log was edited in Tamper Simulation Mode, which caused the verification to fail. 
-                                  In a real environment, this would indicate that someone has modified the log data after it was initially stored.
-                                </Typography>
-                              </>
-                            ) : verificationResults[selectedLog.id].error ? (
-                              <>
-                                <Typography variant="body2" color="error" sx={{ mt: 0.5 }}>
-                                  Reason: {verificationResults[selectedLog.id].error}
-                                </Typography>
-                                <Typography variant="body2" sx={{ mt: 1, fontSize: '0.85rem' }}>
-                                  There was an error during the verification process. This could be due to connectivity issues, 
-                                  missing data, or an issue with the blockchain service.
-                                </Typography>
-                              </>
-                            ) : verificationResults[selectedLog.id].diagnosticInfo && 
-                               verificationResults[selectedLog.id].diagnosticInfo.discrepancies ? (
-                              <>
-                                <Typography variant="body2" color="error" sx={{ mt: 0.5 }}>
-                                  Reason: Log content has been modified.
-                                </Typography>
-                                <Typography variant="body2" sx={{ mt: 0.5, fontSize: '0.85rem' }}>
-                                  Fields with discrepancies: <strong>{verificationResults[selectedLog.id].diagnosticInfo.discrepancies.join(', ')}</strong>
-                                </Typography>
-                                <Typography variant="body2" sx={{ mt: 1, fontSize: '0.85rem' }}>
-                                  The content of the log entry does not match what was originally stored in the system. 
-                                  This indicates that someone has tampered with the log data after it was initially recorded.
-                                </Typography>
-                              </>
-                            ) : (
-                              <>
-                                <Typography variant="body2" color="error" sx={{ mt: 0.5 }}>
-                                  Reason: Merkle proof verification failed.
-                                </Typography>
-                                <Typography variant="body2" sx={{ mt: 1, fontSize: '0.85rem' }}>
-                                  The cryptographic proof could not be verified against the blockchain record. 
-                                  This may indicate data corruption, tampering, or an issue with the Merkle tree generation.
-                                </Typography>
-                              </>
-                            )}
-                          </Box>
-                      )}
-
-                      <Divider sx={{ my: 1 }} /> {/* Reduced margin */}
-
-                      <Typography variant="body2" sx={{ mb: 1 }}>
-                        <strong>Batch ID:</strong> {verificationResults[selectedLog.id].batchId ?? 'N/A'}
-                      </Typography>
-                      <Typography variant="body2" sx={{ mb: 1, wordBreak: 'break-all' }}>
-                        <strong>Merkle Root:</strong> {verificationResults[selectedLog.id].merkleRoot ?? 'N/A'}
-                      </Typography>
-                      {verificationResults[selectedLog.id].blockchainTimestamp && (
-                        <Typography variant="body2">
-                          <strong>Blockchain Timestamp:</strong> {' '}
-                          {new Date(verificationResults[selectedLog.id].blockchainTimestamp * 1000).toLocaleString()}
-                        </Typography>
-                      )}
-
-                    </>
-                  ) : ( // Not verified yet
-                    <Box sx={{ textAlign: 'center', py: 2 }}>
-                      <Typography variant="body1" color="text.secondary">
-                        This log hasn't been verified yet.
-                      </Typography>
-                      <Button
-                        variant="contained"
-                        onClick={() => { handleVerifyLog(selectedLog); }} // Close dialog? Maybe not.
-                        sx={{ mt: 2 }}
-                        disabled={verifyingLogId === selectedLog.id} // Already checked above, but good practice
-                        startIcon={<VerifiedUserIcon/>}
-                      >
-                        Verify Now
-                      </Button>
-                    </Box>
-                  )}
-                </Paper>
+                {/* Verification Process Visualizer */}
+                {verificationResults[selectedLog.id] || verifyingLogId === selectedLog.id ? (
+                  <VerificationVisualizer
+                    verificationResult={verificationResults[selectedLog.id]}
+                    verifying={verifyingLogId === selectedLog.id}
+                    expanded={true}
+                  />
+                ) : (
+                  <Paper variant="outlined" sx={{ p: 2, mb: 3, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '200px' }}>
+                    <Typography variant="h6" gutterBottom>
+                      Verification Status
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{ mb: 2, textAlign: 'center' }}>
+                      This log hasn't been verified yet.
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      onClick={() => { handleVerifyLog(selectedLog); }}
+                      disabled={verifyingLogId === selectedLog.id}
+                      startIcon={<VerifiedUserIcon/>}
+                    >
+                      Verify Now
+                    </Button>
+                  </Paper>
+                )}
 
                 {/* Merkle Visualizer Section (Optional based on verification result) */}
                 {verificationResults[selectedLog.id] && (

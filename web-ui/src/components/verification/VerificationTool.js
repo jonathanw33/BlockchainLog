@@ -11,13 +11,15 @@ import {
   Divider,
   Card,
   CardContent,
-  Stepper,
-  Step,
-  StepLabel,
-  StepContent
+  IconButton,
+  Tooltip
 } from '@mui/material';
+import { 
+  Info as InfoIcon
+} from '@mui/icons-material';
 import { api } from '../../services/api';
 import MerkleVisualizer from '../merkle/MerkleVisualizer';
+import VerificationVisualizer from './VerificationVisualizer';
 
 const VerificationTool = () => {
   const [logInput, setLogInput] = useState(JSON.stringify({
@@ -44,8 +46,11 @@ const VerificationTool = () => {
         throw new Error('Invalid JSON format for log data');
       }
       
-      // Call verification API
-      const result = await api.verifyLog(log, batchId ? parseInt(batchId) : null);
+      // Call verification API - handle batch ID 0 properly
+      const batchIdValue = batchId === '' ? null : parseInt(batchId);
+      // Important: Don't convert batchIdValue to null if it's 0
+      
+      const result = await api.verifyLog(log, batchIdValue);
       setVerificationResult(result);
     } catch (err) {
       console.error('Verification error:', err);
@@ -108,45 +113,38 @@ const VerificationTool = () => {
         </Grid>
         
         <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 2, height: '100%' }}>
-            <Typography variant="h6" gutterBottom>
-              Verification Process
+          <VerificationVisualizer 
+            verificationResult={verificationResult} 
+            verifying={verifying} 
+          />
+          
+          <Paper sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+              <Typography variant="h6">
+                How Blockchain Verification Works
+              </Typography>
+              <Tooltip title="The verification process ensures logs haven't been tampered with">
+                <IconButton size="small">
+                  <InfoIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            </Box>
+            
+            <Typography variant="body2" paragraph>
+              When logs are generated, they are grouped into batches. Each batch creates a Merkle tree - 
+              a cryptographic data structure that efficiently proves content integrity.
             </Typography>
-            <Stepper orientation="vertical">
-              <Step active={true}>
-                <StepLabel>Log Hashing</StepLabel>
-                <StepContent>
-                  <Typography>
-                    The log entry is normalized and hashed using keccak256 to create a unique fingerprint.
-                  </Typography>
-                </StepContent>
-              </Step>
-              <Step active={true}>
-                <StepLabel>Batch Identification</StepLabel>
-                <StepContent>
-                  <Typography>
-                    The system identifies which batch contains the log entry or uses the specified batch ID.
-                  </Typography>
-                </StepContent>
-              </Step>
-              <Step active={true}>
-                <StepLabel>Merkle Proof Retrieval</StepLabel>
-                <StepContent>
-                  <Typography>
-                    The Merkle proof for this log is retrieved from the batch data.
-                  </Typography>
-                </StepContent>
-              </Step>
-              <Step active={true}>
-                <StepLabel>Blockchain Verification</StepLabel>
-                <StepContent>
-                  <Typography>
-                    The Merkle root is retrieved from the blockchain and compared with the root 
-                    reconstructed from the log hash and its proof.
-                  </Typography>
-                </StepContent>
-              </Step>
-            </Stepper>
+            
+            <Typography variant="body2" paragraph>
+              The root hash of this Merkle tree is stored on the blockchain, creating an immutable record 
+              of the logs at that point in time.
+            </Typography>
+            
+            <Typography variant="body2">
+              During verification, the system locates the log in its batch, reconstructs the Merkle path, 
+              and compares the calculated root with the one stored on the blockchain. Any discrepancy 
+              indicates the log has been modified.
+            </Typography>
           </Paper>
         </Grid>
         

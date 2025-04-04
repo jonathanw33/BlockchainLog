@@ -40,3 +40,57 @@ A system that ensures log integrity by creating Merkle trees from log batches an
 ## Getting Started
 
 Instructions for setting up and running each component can be found in their respective directories.
+
+## Batch Processing Behavior
+
+The aggregation service processes logs into batches at regular intervals (default: 5 minutes) as defined in the configuration. This means:
+
+1. Logs sent to the system are first stored in temporary storage
+2. Every 5 minutes, the batch processing job runs and:
+   - Collects all unprocessed logs
+   - Creates a Merkle tree from these logs
+   - Stores the Merkle root on the blockchain
+   - Archives the logs and their proofs
+
+**Important**: There is an intentional delay between sending logs and their appearance as batches. This is normal behavior and helps to:
+- Efficiently process logs in reasonable-sized groups
+- Reduce blockchain transaction costs
+- Provide a predictable processing schedule
+
+## Utility Scripts
+
+The project includes several utility scripts to help with testing and debugging:
+
+- **send-logs.js**: A simple script to generate and send random logs directly to the API
+  ```
+  node send-logs.js [count]
+  ```
+
+- **fix-logs.js**: An enhanced version of send-logs.js that uses axios to send logs to the deployed backend
+  ```
+  node fix-logs.js [count]
+  ```
+
+- **force-batch-process.js**: Attempts to trigger immediate batch processing instead of waiting for the scheduled interval
+  ```
+  node force-batch-process.js
+  ```
+
+- **create-batch.js**: Creates a large number of logs to force batch creation and can also create local test data
+  ```
+  node create-batch.js
+  ```
+  
+  To check if batches exist:
+  ```
+  node create-batch.js check
+  ```
+
+## Troubleshooting
+
+If logs are not appearing as batches:
+
+1. **Wait at least 5 minutes** - The batch processing job runs at 5-minute intervals
+2. **Ensure the log-shipper is running** if you're using the log-generator component
+3. **Check network connectivity** to the backend service
+4. **Use the utility scripts** to send logs directly and force batch processing

@@ -391,3 +391,44 @@
 2025-04-03T09:25:00.007Z [INFO ] No logs to process in this batch
 2025-04-03T09:26:47.557Z [INFO ] Received shutdown signal, closing server...
 2025-04-03T09:26:47.559Z [INFO ] Server closed, exiting process
+2025-04-04T05:07:52.015Z [INFO ] Loaded configuration from config file
+2025-04-04T05:08:00.546Z [INFO ] API: Loaded configuration from config file
+2025-04-04T05:08:00.569Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-04T05:08:00.570Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-04T05:08:00.574Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-04T05:08:00.666Z [INFO ] Next batch processing scheduled for 2025-04-04T05:10:00.000Z
+2025-04-04T05:08:00.666Z [INFO ] Services initialized successfully
+2025-04-04T05:08:00.667Z [INFO ] Service startup complete
+2025-04-04T05:08:08.790Z [INFO ] Received shutdown signal, closing server...
+2025-04-04T05:08:08.792Z [INFO ] Server closed, exiting process
+2025-04-04T05:08:11.017Z [INFO ] Loaded configuration from config file
+2025-04-04T05:08:12.021Z [INFO ] API: Loaded configuration from config file
+2025-04-04T05:08:12.034Z [INFO ] Log Aggregation Service running on port 3000
+2025-04-04T05:08:12.036Z [INFO ] Ensuring storage directories exist - { tempPath: '../log-archive/temp', archivePath: '../log-archive/archive' }
+2025-04-04T05:08:12.040Z [INFO ] Scheduling batch processing every 5 minutes
+2025-04-04T05:08:12.074Z [INFO ] Next batch processing scheduled for 2025-04-04T05:10:00.000Z
+2025-04-04T05:08:12.075Z [INFO ] Services initialized successfully
+2025-04-04T05:08:12.075Z [INFO ] Service startup complete
+2025-04-04T05:10:00.023Z [INFO ] Starting scheduled batch processing
+2025-04-04T05:10:00.025Z [INFO ] Starting log batch processing
+2025-04-04T05:10:00.029Z [INFO ] No logs to process in this batch
+2025-04-04T05:15:00.005Z [INFO ] Starting scheduled batch processing
+2025-04-04T05:15:00.006Z [INFO ] Starting log batch processing
+2025-04-04T05:15:00.008Z [INFO ] No logs to process in this batch
+2025-04-04T05:20:00.006Z [INFO ] Starting scheduled batch processing
+2025-04-04T05:20:00.007Z [INFO ] Starting log batch processing
+2025-04-04T05:20:00.009Z [INFO ] No logs to process in this batch
+2025-04-04T05:25:00.004Z [INFO ] Starting scheduled batch processing
+2025-04-04T05:25:00.005Z [INFO ] Starting log batch processing
+2025-04-04T05:25:00.006Z [INFO ] No logs to process in this batch
+2025-04-04T05:30:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-04T05:30:00.004Z [INFO ] Starting log batch processing
+2025-04-04T05:30:00.006Z [INFO ] No logs to process in this batch
+2025-04-04T05:35:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-04T05:35:00.004Z [INFO ] Starting log batch processing
+2025-04-04T05:35:00.005Z [INFO ] No logs to process in this batch
+2025-04-04T05:40:00.003Z [INFO ] Starting scheduled batch processing
+2025-04-04T05:40:00.004Z [INFO ] Starting log batch processing
+2025-04-04T05:40:00.006Z [INFO ] No logs to process in this batch
+2025-04-04T05:41:09.950Z [INFO ] Received shutdown signal, closing server...
+2025-04-04T05:41:09.952Z [INFO ] Server closed, exiting process

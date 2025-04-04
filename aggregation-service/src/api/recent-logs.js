@@ -11,7 +11,7 @@ const { v4: uuidv4 } = require('uuid');
 // Recent logs endpoint handler
 const getRecentLogs = asyncHandler(async (req, res, storageService) => {
   // Get query parameters with defaults
-  const limit = parseInt(req.query.limit) || 10;
+  const limit = parseInt(req.query.limit) || 50;
   const source = req.query.source;
   const level = req.query.level;
   const since = req.query.since;
@@ -21,8 +21,8 @@ const getRecentLogs = asyncHandler(async (req, res, storageService) => {
   const startTime = Date.now();
   
   // Validate parameters
-  if (isNaN(limit) || limit <= 0 || limit > 100) {
-    throw badRequest('Invalid limit parameter. Must be between 1 and 100.', {
+  if (isNaN(limit) || limit <= 0 || limit > 1000) {
+    throw badRequest('Invalid limit parameter. Must be between 1 and 1000.', {
       providedValue: req.query.limit
     });
   }

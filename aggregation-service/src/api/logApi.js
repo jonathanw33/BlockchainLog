@@ -285,9 +285,13 @@ router.post('/verify', asyncHandler(async (req, res) => {
   
   // Find the batch that contains this log
   let targetBatchId = batchId;
+  let logEntry = null;
+  let proof = null;
+  let searchError = null;
   
-  // If batch ID not provided, search for the log
-  if (!targetBatchId) {
+  // If batch ID not provided or is 0, search for the log
+  // Note: We treat batchId === 0 as a valid batch ID now
+  if (targetBatchId === undefined || targetBatchId === null) {
     logger.debug(`No batch ID provided, searching for log in all batches`, { requestId });
     
     // Use a stricter search to ensure we get the correct batch
@@ -296,32 +300,82 @@ router.post('/verify', asyncHandler(async (req, res) => {
     targetBatchId = searchResult?.batchId;
     
     if (!targetBatchId) {
-      logger.warn(`Log not found in any batch`, {
+      searchError = 'Log not found in any batch';
+      logger.warn(`${searchError}`, {
         requestId,
         logTimestamp: log.timestamp,
         logSource: log.source
       });
-      throw notFound('Log not found in any batch', { requestId });
+      // Don't throw yet - we'll create a more detailed error response
+    } else {
+      logger.debug(`Found log in batch ${targetBatchId}`, { requestId });
     }
-    
-    logger.debug(`Found log in batch ${targetBatchId}`, { requestId });
   }
   
-  // Get the log entry and its proof from storage
-  logger.debug(`Retrieving log and proof from batch ${targetBatchId}`, { requestId });
-  const { logEntry, proof } = await storageService.getLogAndProof(targetBatchId, log);
+  // If we have a batch ID, try to get the log and proof
+  if (targetBatchId && !searchError) {
+    // Get the log entry and its proof from storage
+    logger.debug(`Retrieving log and proof from batch ${targetBatchId}`, { requestId });
+    
+    try {
+      // Attempt to find the best matching log instead of requiring exact match
+      const result = await storageService.getLogAndProof(targetBatchId, log, true); // Added 'true' for fuzzy matching
+      logEntry = result.logEntry;
+      proof = result.proof;
+      
+      if (!logEntry || !proof) {
+        searchError = 'Log or proof not found in specified batch';
+        logger.warn(`${searchError}`, {
+          requestId,
+          batchId: targetBatchId,
+          hasLogEntry: !!logEntry,
+          hasProof: !!proof
+        });
+      }
+    } catch (err) {
+      searchError = err.message || 'Error retrieving log and proof';
+      logger.warn(`${searchError}`, {
+        requestId,
+        batchId: targetBatchId,
+        error: err.message
+      });
+    }
+  }
   
-  if (!logEntry || !proof) {
-    logger.warn(`Log or proof not found in specified batch`, {
+  // If we couldn't find the log or proof, create a detailed response instead of throwing
+  if (searchError) {
+    // Build a structured verification failure response instead of throwing an error
+    const errorResponse = {
+      status: 'error',
+      requestId,
+      verified: false,
+      error: searchError,
+      log: null,
+      requestedLog: log,
+      batchId: targetBatchId,
+      verificationTimeMs: Date.now() - verificationStart,
+      failureReason: {
+        type: 'LOG_NOT_FOUND',
+        description: 'The requested log could not be found in the system'
+      },
+      diagnosticInfo: {
+        error: searchError,
+        requestedLog: {
+          timestamp: log.timestamp,
+          level: log.level,
+          message: log.message,
+          source: log.source
+        }
+      }
+    };
+    
+    logger.info(`Verification failed: LOG_NOT_FOUND`, {
       requestId,
       batchId: targetBatchId,
-      hasLogEntry: !!logEntry,
-      hasProof: !!proof
+      verificationTimeMs: Date.now() - verificationStart
     });
-    throw notFound('Log or proof not found in specified batch', { 
-      requestId, 
-      batchId: targetBatchId
-    });
+    
+    return res.status(200).json(errorResponse);
   }
   
   // Get the Merkle root from blockchain
@@ -429,7 +483,62 @@ router.post('/verify', asyncHandler(async (req, res) => {
     }
   }
   
-  // Prepare and send response
+  // Prepare detailed verification steps for frontend visualization
+  const verificationSteps = [
+    {
+      id: 'parse',
+      name: 'Log Parsing',
+      status: 'success',
+      details: {
+        requestedLog: log,
+        normalizedLog: {
+          timestamp: log.timestamp,
+          level: log.level,
+          message: log.message,
+          source: log.source
+        }
+      }
+    },
+    {
+      id: 'batch',
+      name: 'Batch Identification',
+      status: 'success',
+      details: {
+        batchId: targetBatchId,
+        searchStrategy: batchId ? 'direct' : 'search',
+        timeRange: {
+          start: new Date(logEntry.timestamp).toISOString(),
+          batchTimestamp: timestamp
+        }
+      }
+    },
+    {
+      id: 'content',
+      name: 'Content Validation',
+      status: discrepancies.length > 0 ? 'failed' : 'success',
+      details: {
+        discrepancies: discrepancies.length > 0 ? discrepancies.map(field => ({
+          field,
+          expected: logEntry[field],
+          received: log[field]
+        })) : [],
+        contentMatch: discrepancies.length === 0
+      }
+    },
+    {
+      id: 'merkle',
+      name: 'Merkle Proof Verification',
+      status: verificationResult.verified ? 'success' : 'failed',
+      details: {
+        merkleRoot: root,
+        proofLength: proof ? proof.length : 0,
+        verified: verificationResult.verified,
+        reason: verificationResult.reason
+      }
+    }
+  ];
+  
+  // Prepare and send response with enhanced verification details
   res.status(200).json({
     status: 'success',
     requestId,
@@ -441,6 +550,7 @@ router.post('/verify', asyncHandler(async (req, res) => {
     blockchainTimestamp: timestamp,
     verificationTimeMs: verificationTime,
     failureReason,
+    verificationSteps, // Add detailed steps for visualization
     diagnosticInfo: {
       requestedLogHash,
       foundLogHash,

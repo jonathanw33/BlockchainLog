@@ -209,7 +209,11 @@ async function findBatchContainingLog(log) {
     return bId - aId; // Descending order
   });
   
-  // First, try to find an exact match
+  // Use a more sophisticated matching approach
+  
+  // Step 1: First try to find an exact match
+  let exactMatchResult = null;
+  
   for (const batchDir of batchDirs) {
     if (!batchDir.startsWith('batch_')) {
       continue;
@@ -233,7 +237,6 @@ async function findBatchContainingLog(log) {
         const messageMatch = l.message === log.message;
         const sourceMatch = l.source === log.source;
         
-        // Log detailed information about matches
         if (timestampMatch && levelMatch && messageMatch && sourceMatch) {
           console.log(`Found exact log match in batch ${batchId}`);
         }
@@ -242,18 +245,90 @@ async function findBatchContainingLog(log) {
       });
       
       if (exactMatch) {
-        return { 
+        exactMatchResult = { 
           batchId,
           logId: exactMatch.id,
-          matchType: 'exact'
+          matchType: 'exact',
+          log: exactMatch
         };
+        // Return early if we find an exact match
+        return exactMatchResult;
       }
     } catch (error) {
       console.error(`Error reading logs from ${logsPath}:`, error);
     }
   }
   
-  console.log('Exact log match not found in any batch');
+  // Step 2: If no exact match, try finding a match based on timestamp and log pattern
+  if (!exactMatchResult) {
+    console.log('Exact log match not found in any batch, trying pattern matching...');
+    
+    // Extract test log number if available
+    let testLogNum = null;
+    if (log.message && log.message.includes('Test log')) {
+      const match = log.message.match(/Test log (\d+)/);
+      if (match) {
+        testLogNum = parseInt(match[1]);
+        console.log(`Extracted test log number: ${testLogNum}`);
+      }
+    }
+    
+    // Try to find logs with the same timestamp first
+    for (const batchDir of batchDirs) {
+      if (!batchDir.startsWith('batch_')) {
+        continue;
+      }
+      
+      const batchPath = path.join(archivePath, batchDir);
+      const logsPath = path.join(batchPath, 'logs.json');
+      
+      if (!await fs.pathExists(logsPath)) {
+        continue;
+      }
+      
+      try {
+        const logs = await fs.readJson(logsPath);
+        const batchId = parseInt(batchDir.replace('batch_', ''));
+        
+        // Find logs with matching timestamp
+        const timeMatches = logs.filter(l => l.timestamp === log.timestamp);
+        
+        if (timeMatches.length > 0) {
+          console.log(`Found ${timeMatches.length} logs with matching timestamp in batch ${batchId}`);
+          
+          // If we have a test log number, try to find a matching test log
+          if (testLogNum !== null) {
+            const patternMatch = timeMatches.find(l => {
+              const match = l.message.match(/Test log (\d+)/);
+              return match && parseInt(match[1]) === testLogNum;
+            });
+            
+            if (patternMatch) {
+              console.log(`Found log with matching test number pattern in batch ${batchId}`);
+              return {
+                batchId,
+                logId: patternMatch.id,
+                matchType: 'pattern',
+                log: patternMatch
+              };
+            }
+          }
+          
+          // If no pattern match or no test log number, return the first timestamp match
+          console.log(`Using first timestamp match in batch ${batchId}`);
+          return {
+            batchId,
+            logId: timeMatches[0].id,
+            matchType: 'timestamp',
+            log: timeMatches[0]
+          };
+        }
+      } catch (error) {
+        console.error(`Error reading logs from ${logsPath}:`, error);
+      }
+    }
+  }
+  
   console.log('Log not found in any batch');
   return null;
 }
@@ -262,12 +337,16 @@ async function findBatchContainingLog(log) {
  * Get log and its proof from a batch
  * @param {Number} batchId The batch ID
  * @param {Object} log The log to find
+ * @param {Boolean} useFuzzyMatching Whether to use fuzzy matching if exact match fails
  * @returns {Promise<Object>} The log entry and its proof
  */
-async function getLogAndProof(batchId, log) {
+async function getLogAndProof(batchId, log, useFuzzyMatching = false) {
+  // Treat 0 as a valid batch ID
   console.log(`Getting log and proof from batch ${batchId}`);
   
-  const batchPath = path.join(archivePath, `batch_${batchId}`);
+  // Handle zero as a valid batch ID
+  const batchIdStr = batchId === 0 ? '0' : batchId.toString();
+  const batchPath = path.join(archivePath, `batch_${batchIdStr}`);
   const logsPath = path.join(batchPath, 'logs.json');
   const proofsPath = path.join(batchPath, 'proofs.json');
   
@@ -280,14 +359,14 @@ async function getLogAndProof(batchId, log) {
     const logs = await fs.readJson(logsPath);
     const proofs = await fs.readJson(proofsPath);
     
-    // Find the exact log match only - no more "closest match" approach
-    const logEntry = logs.find(l => {
+    // First try to find an exact match
+    let logEntry = logs.find(l => {
       const timestampMatch = l.timestamp === log.timestamp;
       const levelMatch = l.level === log.level;
       const messageMatch = l.message === log.message;
       const sourceMatch = l.source === log.source;
       
-      // Log detailed information about matches for debugging
+      // Log detailed information about the exact match check
       console.log(`Checking exact match in batch ${batchId}:`);
       console.log(`- Timestamp: ${timestampMatch ? 'MATCH' : 'MISMATCH'} ('${l.timestamp}' vs '${log.timestamp}')`);
       console.log(`- Level: ${levelMatch ? 'MATCH' : 'MISMATCH'} ('${l.level}' vs '${log.level}')`);
@@ -297,8 +376,54 @@ async function getLogAndProof(batchId, log) {
       return timestampMatch && levelMatch && messageMatch && sourceMatch;
     });
     
+    // If no exact match and fuzzy matching is enabled, try to find the best match
+    if (!logEntry && useFuzzyMatching) {
+      console.log(`No exact match found, attempting to find best match using timestamp`);
+      
+      // Strategy 1: Match by timestamp first (most reliable field)
+      const timeMatches = logs.filter(l => l.timestamp === log.timestamp);
+      
+      if (timeMatches.length > 0) {
+        console.log(`Found ${timeMatches.length} logs with matching timestamp`);
+        
+        // Strategy 2: If we have timestamp matches, try to match by log message pattern
+        // Look for logs with similar message content (e.g., same prefix or pattern)
+        if (log.message && log.message.includes('Test log')) {
+          const testLogMatches = timeMatches.filter(l => {
+            // Try to extract the test log number pattern
+            const requestedMatch = log.message.match(/Test log (\d+)/);
+            const potentialMatch = l.message.match(/Test log (\d+)/);
+            
+            if (requestedMatch && potentialMatch) {
+              const requestedNumber = parseInt(requestedMatch[1]);
+              const potentialNumber = parseInt(potentialMatch[1]);
+              
+              // If the numbers match, this is likely our log without tampering
+              const matched = requestedNumber === potentialNumber;
+              if (matched) {
+                console.log(`Found matching test log number: ${requestedNumber}`);
+              }
+              return matched;
+            }
+            return false;
+          });
+          
+          if (testLogMatches.length > 0) {
+            logEntry = testLogMatches[0];
+            console.log(`Using fuzzy match: Test log number match for "${log.message}"`);
+          }
+        }
+        
+        // Strategy 3: If still no match, use the first timestamp match as a fallback
+        if (!logEntry) {
+          logEntry = timeMatches[0];
+          console.log(`Using fuzzy match: First timestamp match for "${log.timestamp}"`);
+        }
+      }
+    }
+    
     if (!logEntry) {
-      console.error(`No exact matching log found in batch ${batchId}`);
+      console.error(`No matching log found in batch ${batchId}`);
       return { logEntry: null, proof: null };
     }
     
@@ -325,10 +450,24 @@ async function getLogAndProof(batchId, log) {
 async function getBatchInfo(batchId) {
   console.log(`Getting info for batch ${batchId}`);
   
-  const batchPath = path.join(archivePath, `batch_${batchId}`);
+  // Handle zero as a valid batch ID (important for systems where batch IDs start at 0)
+  const batchIdStr = batchId === 0 ? '0' : batchId.toString();
+  const batchPath = path.join(archivePath, `batch_${batchIdStr}`);
   const metadataPath = path.join(batchPath, 'metadata.json');
   
   if (!await fs.pathExists(metadataPath)) {
+    // Try alternative path for batch 0 (in case it's stored differently)
+    const altPath = path.join(archivePath, `batch_0`);
+    const altMetadataPath = path.join(altPath, 'metadata.json');
+    
+    if (batchId === 0 && await fs.pathExists(altMetadataPath)) {
+      try {
+        return await fs.readJson(altMetadataPath);
+      } catch (error) {
+        console.error(`Error reading batch 0 metadata:`, error);
+      }
+    }
+    
     console.error(`Batch ${batchId} metadata not found`);
     return null;
   }
