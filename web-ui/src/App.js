@@ -1,28 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Container, AppBar, Toolbar, Typography, Tabs, Tab, Button, Snackbar, Alert, Switch, FormControlLabel } from '@mui/material';
+import { Box, ThemeProvider, CssBaseline, Snackbar, Alert } from '@mui/material';
+import { VerifiedUser as VerifiedUserIcon } from '@mui/icons-material';
 import Dashboard from './components/dashboard/Dashboard';
 import EnhancedLogBrowser from './components/logs/EnhancedLogBrowser';
 import VerificationTool from './components/verification/VerificationTool';
 import Welcome from './components/welcome/Welcome';
 import LogGenerator from './components/generator/LogGenerator';
 import { api } from './services/api';
-
-// Custom tab panel component
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`tabpanel-${index}`}
-      aria-labelledby={`tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
-}
+import theme from './theme/theme';
+import MainLayout from './components/layout/MainLayout';
 
 function App() {
   const [tabValue, setTabValue] = useState(0);
@@ -159,73 +145,72 @@ function App() {
     setSnackbarOpen(false);
   };
   
+  const handleNavigateToLogs = () => {
+    setTabValue(1); // Switch to Log Browser tab
+  };
+  
   // If it's the first visit or no mode is selected, show the welcome screen
   if (firstVisit || !mode) {
-    return <Welcome onSelectMode={handleSelectMode} />;
+    return (
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Welcome onSelectMode={handleSelectMode} />
+      </ThemeProvider>
+    );
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Blockchain-Based Log Integrity System
-          </Typography>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={mode === 'generate'}
-                onChange={handleToggleMode}
-                color="secondary"
-              />
-            }
-            label={mode === 'generate' ? "Generated Logs Mode" : "Existing Logs Mode"}
-            sx={{ color: 'white', mr: 2 }}
-          />
-          <Button color="inherit" onClick={resetWelcomeScreen} size="small">
-            Reset Welcome
-          </Button>
-        </Toolbar>
-        <Tabs 
-          value={tabValue} 
-          onChange={handleTabChange} 
-          aria-label="navigation tabs"
-          variant="fullWidth"
-          textColor="inherit"
-          indicatorColor="secondary"
-        >
-          <Tab label="Dashboard" />
-          <Tab label="Log Browser & Verification" />
-          <Tab label="Manual Verification" />
-          <Tab label="Log Generator" sx={{ display: mode === 'generate' ? 'flex' : 'none' }} />
-        </Tabs>
-      </AppBar>
-      <Container maxWidth="lg">
-        <TabPanel value={tabValue} index={0}>
-          <Dashboard key={`dashboard-${mode}-${generatedLogs.length}`} />
-        </TabPanel>
-        <TabPanel value={tabValue} index={1}>
-          <EnhancedLogBrowser key={`browser-${mode}-${generatedLogs.length}`} />
-        </TabPanel>
-        <TabPanel value={tabValue} index={2}>
-          <VerificationTool key={`verification-${mode}-${generatedLogs.length}`} />
-        </TabPanel>
-        <TabPanel value={tabValue} index={3}>
-          <LogGenerator onLogsGenerated={handleLogsGenerated} />
-        </TabPanel>
-      </Container>
-      
-      <Snackbar 
-        open={snackbarOpen} 
-        autoHideDuration={6000} 
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <MainLayout
+        tabValue={tabValue}
+        handleTabChange={handleTabChange}
+        mode={mode}
+        handleToggleMode={handleToggleMode}
+        resetWelcomeScreen={resetWelcomeScreen}
       >
-        <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity} sx={{ width: '100%' }}>
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
-    </Box>
+        {tabValue === 0 && (
+          <Dashboard 
+            key={`dashboard-${mode}-${generatedLogs.length}`}
+            onNavigateToLogs={handleNavigateToLogs}
+          />
+        )}
+        
+        {tabValue === 1 && (
+          <EnhancedLogBrowser 
+            key={`browser-${mode}-${generatedLogs.length}`}
+          />
+        )}
+        
+        {tabValue === 2 && (
+          <VerificationTool 
+            key={`verification-${mode}-${generatedLogs.length}`}
+          />
+        )}
+        
+        {tabValue === 3 && (
+          <LogGenerator 
+            onLogsGenerated={handleLogsGenerated}
+          />
+        )}
+        
+        <Snackbar 
+          open={snackbarOpen} 
+          autoHideDuration={6000} 
+          onClose={handleCloseSnackbar}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+          <Alert 
+            onClose={handleCloseSnackbar} 
+            severity={snackbarSeverity} 
+            variant="filled" 
+            sx={{ width: '100%' }}
+          >
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
+      </MainLayout>
+    </ThemeProvider>
   );
 }
 

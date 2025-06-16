@@ -166,47 +166,37 @@ async function checkBatches() {
 // Create a batch of logs
 async function createBatchOfLogs() {
   try {
-    console.log('Creating a batch of logs and sending to API...');
+    console.log('Creating a single batch of 10 logs and sending to API...');
     
-    // Generate multiple sets of logs with time gaps to encourage separate batches
-    for (let batchNum = 0; batchNum < 4; batchNum++) {
-      const logs = [];
-      const levels = ['INFO', 'WARN', 'ERROR'];
-      const sources = ['auth-service', 'db-service', 'monitor-service', 'api-service', 'user-service'];
+    const logs = [];
+    const levels = ['INFO', 'WARN', 'ERROR'];
+    const sources = ['auth-service', 'db-service', 'monitor-service', 'api-service', 'user-service'];
+    
+    // Create a batch of 10 logs with timestamps close together
+    const batchTime = new Date();
+    
+    for (let i = 0; i < 10; i++) {
+      // Create logs with staggered timestamps within the batch
+      const logTime = new Date(batchTime.getTime() - (i * 100)); // Small stagger within batch
       
-      // Create a batch of 10 logs with a unique timestamp for each batch
-      // Add delay between batches to help the system recognize them as separate
-      const batchTime = new Date(Date.now() - (batchNum * 60000)); // 1 minute gap between batches
-      
-      for (let i = 0; i < 10; i++) {
-        // Create logs with staggered timestamps within the batch
-        const logTime = new Date(batchTime.getTime() - (i * 100)); // Small stagger within batch
-        
-        logs.push({
-          timestamp: logTime.toISOString(),
-          level: levels[Math.floor(Math.random() * levels.length)],
-          message: `Batch ${batchNum+1} log ${i+1} with ID: ${Math.random().toString(36).substring(2, 15)}`,
-          source: sources[Math.floor(Math.random() * sources.length)]
-        });
-      }
-      
-      console.log(`Sending batch ${batchNum+1}/4 with 10 logs (timestamp: ${batchTime.toISOString()})...`);
-      
-      // Send this batch to the API
-      const response = await axios.post(`${API_URL}/logs`, logs, {
-        auth: AUTH
+      logs.push({
+        timestamp: logTime.toISOString(),
+        level: levels[Math.floor(Math.random() * levels.length)],
+        message: `Log ${i+1} with ID: ${Math.random().toString(36).substring(2, 15)}`,
+        source: sources[Math.floor(Math.random() * sources.length)]
       });
-      
-      console.log(`Batch ${batchNum+1} response:`, response.data);
-      
-      // Wait a few seconds between sending batches to ensure they're processed separately
-      if (batchNum < 3) {
-        console.log(`Waiting 5 seconds before sending next batch...`);
-        await new Promise(resolve => setTimeout(resolve, 5000));
-      }
     }
     
-    console.log('All logs sent successfully. The system should create multiple batches shortly.');
+    console.log(`Sending a single batch with 10 logs (timestamp: ${batchTime.toISOString()})...`);
+    
+    // Send this batch to the API
+    const response = await axios.post(`${API_URL}/logs`, logs, {
+      auth: AUTH
+    });
+    
+    console.log(`Batch response:`, response.data);
+    
+    console.log('Logs sent successfully. The system should create a single batch shortly.');
     return true;
   } catch (error) {
     console.error('Error creating batch of logs:');
@@ -275,11 +265,10 @@ async function main() {
     const batchesExist = await checkBatches();
     
     if (batchesExist) {
-      console.log('Batches already exist. No need to create more.');
-      return;
+      console.log('Batches exist, but proceeding to create a new batch anyway...');
     }
     
-    // Create and send multiple batches of logs
+    // Create and send a single batch of logs
     await createBatchOfLogs();
     
     // Wait for processing
